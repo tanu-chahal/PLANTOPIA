@@ -1,0 +1,30 @@
+.search::placeholder {
+  color: #8f8f8f;
+}
+
+.search:focus {
+  outline-color: #c1dcdc;
+}
+
+.searchForm {
+  position: relative;
+}
+
+.searchBtn {
+  background-color: #c1dcdc;
+  border: none;
+  position: absolute;
+  right: -20px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.searchBtn:hover{
+    color: white;
+}
