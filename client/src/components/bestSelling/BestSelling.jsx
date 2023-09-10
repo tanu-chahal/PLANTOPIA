@@ -9,25 +9,6 @@ import styles from "./BestSelling.module.css";
 
 function BestSelling() {
 
-    // const theme = createTheme({
-    //     components: {
-    //       // Name of the component
-    //       MuiButton: {
-    //         styleOverrides: {
-    //           // Name of the slot
-    //           root: {
-    //             // Some CSS
-    //             MuiButton:hover{
-    //                 color: "#c1dcdc";
-    // border: 0.5px solid "#c1dcdc";
-    // background-color: white;
-    //             }
-    //           },
-    //         },
-    //       },
-    //     },
-    //   });
-
   return (
     <Container
       className="BestSelling"
