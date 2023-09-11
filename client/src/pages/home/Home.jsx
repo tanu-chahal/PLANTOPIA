@@ -3,6 +3,7 @@ import Intro from "../../components/intro/Intro";
 import BestSelling from "../../components/bestSelling/BestSelling";
 import About from "../../components/about/About";
 import Categories from "../../components/categories/Categories";
+import Reviews from "../../components/reviews/Reviews";
 
 function Home() {
 
@@ -12,6 +13,7 @@ function Home() {
       <BestSelling/>
       <About/>
       <Categories/>
+      <Reviews/>
     </>
   );
 }
