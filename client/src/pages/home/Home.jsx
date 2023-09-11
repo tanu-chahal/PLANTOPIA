@@ -2,6 +2,7 @@ import React from "react";
 import Intro from "../../components/intro/Intro";
 import BestSelling from "../../components/bestSelling/BestSelling";
 import About from "../../components/about/About";
+import Categories from "../../components/categories/Categories";
 
 function Home() {
 
@@ -10,6 +11,7 @@ function Home() {
       <Intro/>
       <BestSelling/>
       <About/>
+      <Categories/>
     </>
   );
 }

@@ -34,7 +34,6 @@ function BestSelling() {
           Easiest way to healthy life by buying your favorite plants{" "}
         </Typography>
         <Button
-        className={styles.Button}
           variant="contained"
           color= "primary"
           sx={{
