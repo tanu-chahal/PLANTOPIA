@@ -8,7 +8,6 @@ import { plants } from "../../utils/data.js";
 import styles from "./BestSelling.module.css";
 
 function BestSelling() {
-
   return (
     <Container
       className="BestSelling"
@@ -19,23 +18,29 @@ function BestSelling() {
         height: 450,
         alignItems: "center",
         my: 10,
+        userSelect: "none",
       }}
     >
-      <Box sx={{ height: 350, width: 250, display:'flex', flexDirection: 'column', gap:3, alignItems: 'flex-start', justifyItems: 'start' }}>
-        <Typography component="h4" variant="h4" sx={{ fontWeight: 900,  }}>
+      <Box
+        sx={{
+          height: 350,
+          width: 250,
+          display: "flex",
+          flexDirection: "column",
+          gap: 3,
+          alignItems: "flex-start",
+          justifyItems: "start",
+        }}
+      >
+        <Typography component="h4" variant="h4" sx={{ fontWeight: 800 }}>
           Best Selling Plants
         </Typography>
-        <Typography
-          component="h4"
-          variant="h6"
-          color="secondary"
-          sx={{ fontWeight: 400 }}
-        >
+        <Typography component="h4" variant="h6" color="secondary">
           Easiest way to healthy life by buying your favorite plants{" "}
         </Typography>
         <Button
           variant="contained"
-          color= "primary"
+          color="primary"
           sx={{
             border: "none",
             boxShadow: 0,
@@ -45,10 +50,10 @@ function BestSelling() {
             px: 3,
             fontSize: 20,
             borderRadius: 3,
-            '&:hover': {
-                color: "white",
-                boxShadow: 0,
-              },
+            "&:hover": {
+              color: "white",
+              boxShadow: 0,
+            },
           }}
         >
           See more <ArrowForwardRoundedIcon />

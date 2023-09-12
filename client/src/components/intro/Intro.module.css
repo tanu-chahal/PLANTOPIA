@@ -1,3 +1,13 @@
+.search{
+  font-size: 18px;
+  width: 100%;
+  border-radius: 10px;
+  height: 20px;
+  padding: 20px 15px;
+  border: none;
+  color: black;
+}
+
 .search::placeholder {
   color: #8f8f8f;
 }
@@ -27,4 +37,5 @@
 
 .searchBtn:hover{
     color: white;
+    background-color: #889c9c;
 }

@@ -13,16 +13,17 @@ function Categories() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        mt:5, userSelect:'none'
       }}
     >
-      <Typography variant="h4" component="h4" sx={{ fontWeight: 900 }}>
+      <Typography variant="h4" component="h4" sx={{ fontWeight: 800 }}>
         Categories
       </Typography>
       <Typography
         color="secondary"
         component="p"
         variant="h6"
-        sx={{ fontWeight: 400, mt:2, }}
+        sx={{ mt:2, }}
       >
         Find what you're looking for
       </Typography>
@@ -61,7 +62,7 @@ function Categories() {
               objectFit: "cover",
             }}
           />
-          <Typography component="h6" variant="h6" sx={{ fontWeight: 900 }}>
+          <Typography component="h6" variant="h6" sx={{ fontWeight: 800,}}>
             Natural Plants
           </Typography>
         </Box>
@@ -84,7 +85,7 @@ function Categories() {
               borderRadius: "10px",
             }}
           />
-          <Typography component="h6" variant="h6" sx={{ fontWeight: 900 }}>
+          <Typography component="h6" variant="h6" sx={{ fontWeight: 800,}}>
             Plant Accessories
           </Typography>
         </Box>
@@ -110,14 +111,14 @@ function Categories() {
               borderRadius: "10px",
             }}
           />
-          <Typography component="h6" variant="h6" sx={{ fontWeight: 900 }}>
+          <Typography component="h6" variant="h6" sx={{ fontWeight: 800,}}>
             Artificial Plants
           </Typography>
         </Box>
       </Box>
       
       <Box sx={{backgroundColor: '#c1dcdc', width:'100%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap:2, pt:2, pb: 10,}}>
-      <Typography component="p" variant="h6" color="secondary" sx={{fontWeight: 400, textAlign:'center', maxWidth: 300}}>
+      <Typography component="p" variant="h6" color="secondary" sx={{textAlign:'center', maxWidth: 300,  userSelect:'none'}}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
       </Typography>
       <Button

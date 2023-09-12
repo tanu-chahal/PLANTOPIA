@@ -4,6 +4,7 @@ import BestSelling from "../../components/bestSelling/BestSelling";
 import About from "../../components/about/About";
 import Categories from "../../components/categories/Categories";
 import Reviews from "../../components/reviews/Reviews";
+import Footer from "../../components/footer/Footer";
 
 function Home() {
 
@@ -14,6 +15,7 @@ function Home() {
       <About/>
       <Categories/>
       <Reviews/>
+      <Footer/>
     </>
   );
 }

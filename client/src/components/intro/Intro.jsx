@@ -2,20 +2,12 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
 import React from "react";
 import styles from "./Intro.module.css";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 
 function Intro() {
-  const inputStyle = {
-    fontSize: "18px",
-    width: "100%",
-    borderRadius: "10px",
-    height: "20px",
-    padding: "20px 15px",
-    border: "none",
-    color: "black",
-  };
 
   return (
     <Container
@@ -26,6 +18,7 @@ function Intro() {
         justifyContent: "space-between",
         height: 450,
         borderRadius: 10,
+        userSelect: "none",
       }}
     >
       <Box
@@ -39,7 +32,11 @@ function Intro() {
           width: 400,
         }}
       >
-        <Typography variant="h3" sx={{ fontWeight: 900, maxWidth: 300 }}>
+        <Typography
+          variant="h3"
+          component="h1"
+          sx={{ fontWeight: 900, maxWidth: 350 }}
+        >
           Buy your dream plants
         </Typography>
 
@@ -48,7 +45,7 @@ function Intro() {
             <Typography component="p" variant="h4" sx={{ fontWeight: 500 }}>
               50+
             </Typography>
-            <Typography component="p" variant="h6" sx={{ fontWeight: 400 }}>
+            <Typography component="p" variant="h6" sx={{ fontWeight: 600 }}>
               Plant Species
             </Typography>
           </Box>
@@ -61,7 +58,7 @@ function Intro() {
             <Typography component="p" variant="h4" sx={{ fontWeight: 500 }}>
               100+
             </Typography>
-            <Typography component="p" variant="h6" sx={{ fontWeight: 400 }}>
+            <Typography component="p" variant="h6" sx={{ fontWeight: 600 }}>
               Customers
             </Typography>
           </Box>
@@ -72,9 +69,8 @@ function Intro() {
             type="text"
             placeholder="What are you looking for?"
             className={styles.search}
-            style={inputStyle}
           />
-          <button className={styles.searchBtn}>
+          <button variant="contained" className={styles.searchBtn}>
             <SearchRoundedIcon />
           </button>
         </form>
@@ -85,29 +81,49 @@ function Intro() {
           alignSelf: "flex-end",
           justifySelf: "flex-end",
           display: "flex",
-          position:"relative",
+          position: "relative",
           height: "100%",
           width: "60%",
           gap: 5,
           justifyContent: "end",
         }}
       >
-        <img style={{ width: "100px", position: "absolute", bottom: "5%" , left: "5%", transform: "rotate(15deg)",}} src="/img/c-arr-1.png" alt="" />
+        <img
+          style={{
+            width: "100px",
+            position: "absolute",
+            bottom: "5%",
+            left: "5%",
+            transform: "rotate(15deg)",
+          }}
+          src="/img/c-arr-1.png"
+          alt=""
+        />
         <Box
           sx={{
             backgroundColor: "black",
-            borderRadius: "50% 50% 0 50%", 
+            borderRadius: "50% 50% 0 50%",
             alignSelf: "flex-end",
             mx: 10,
           }}
         >
           <img
-            style={{ width: "400px", heigth: "400px", borderRadius: "50%", }}
+            style={{ width: "400px", heigth: "400px", borderRadius: "50%" }}
             src="/img/pot-2.jpeg"
             alt=""
           />
         </Box>
-        <img style={{ width: "80px", position: "absolute", top: "0%", right: "5%",  transform: "rotate(180deg)"}} src="/img/c-arr-1.png" alt="" />
+        <img
+          style={{
+            width: "80px",
+            position: "absolute",
+            top: "0%",
+            right: "5%",
+            transform: "rotate(180deg)",
+          }}
+          src="/img/c-arr-1.png"
+          alt=""
+        />
       </Box>
     </Container>
   );
