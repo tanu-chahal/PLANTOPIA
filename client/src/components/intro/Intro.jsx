@@ -2,7 +2,6 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
 import React from "react";
 import styles from "./Intro.module.css";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";

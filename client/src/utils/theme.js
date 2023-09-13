@@ -10,7 +10,7 @@ const theme = createTheme({
     },
     tertiary:{
       main: '#484c4c',
-    }
+    },
   },
   typography: {
     fontFamily: '"Montserrat", Arial, sans-serif',
