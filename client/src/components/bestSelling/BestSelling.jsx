@@ -59,7 +59,7 @@ function BestSelling() {
           See more <ArrowForwardRoundedIcon />
         </Button>
       </Box>
-      {plants.map((p) => {
+      {plants.slice(0,3).map((p) => {
         return (
           <Box key={p.id}>
             <img src={p.img} alt="" className={styles.plantImg} />
