@@ -5,13 +5,34 @@ import Select from "@mui/material/Select";
 import Container from "@mui/material/Container";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import { plants } from "../../utils/data.js";
 import Card from "../../components/card/Card.jsx";
 
 function Products() {
+  const navigate = useNavigate();
+  const breadcrumbs = [
+    <Typography
+      color="secondary"
+      component="p"
+      variant="subtitle2"
+      sx={{ cursor: "pointer", "&:hover": { color: "#484c4c" } }}
+      onClick={()=>navigate("/")}
+    >
+      Home
+    </Typography>,
+    <Typography
+      color="secondary"
+      component="p"
+      variant="subtitle2"
+      sx={{ cursor: "pointer", "&:hover": { color: "#484c4c" } }}
+      onClick={()=>navigate("/products")}
+    >
+      Products
+    </Typography>,
+  ];
   const [category, setCategory]=useState("All");
   const [sort, setSort]=useState("sales");
   const [price, setPrice]=useState(null);
@@ -52,6 +73,10 @@ function Products() {
         alignItems: "center",
       }}
     >
+      <Breadcrumbs separator="›" aria-label="breadcrumb" sx={{alignSelf:'flex-start', mx:5,}}>
+        {breadcrumbs}
+      </Breadcrumbs>
+
       <Container
         maxWidth="lg"
         className="top"

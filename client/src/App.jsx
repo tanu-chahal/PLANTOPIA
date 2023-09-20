@@ -1,4 +1,11 @@
-import { useState } from 'react'
+import {
+  RecoilRoot,
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from 'recoil';
+
 import Home from './pages/home/Home'
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './utils/theme.js';
@@ -10,16 +17,18 @@ import Product from './pages/product/Product';
 import Cart from './pages/cart/Cart';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
-import Contacts from './pages/contacts/Contacts';
+import Contact from './pages/contact/Contact';
 
 function App() {
  const Layout = () =>{ return (
      <div className="App">
-       <ThemeProvider theme={theme}>
+      <RecoilRoot>
+      <ThemeProvider theme={theme}>
       <Navbar/>
       <Outlet/>
       <Footer/>
       </ThemeProvider>
+      </RecoilRoot>
      </div>
   )}
 
@@ -53,8 +62,8 @@ function App() {
           element: <Register/>
         },
         {
-          path: "/contacts",
-          element: <Contacts/>
+          path: "/contact",
+          element: <Contact/>
         }
       ]
     }
