@@ -6,8 +6,10 @@ import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import React from "react";
 import { plants } from "../../utils/data.js";
 import styles from "./BestSelling.module.css";
+import { useNavigate } from "react-router-dom";
 
 function BestSelling() {
+  const navigate = useNavigate();
   return (
     <Container
       className="BestSelling"
@@ -55,6 +57,7 @@ function BestSelling() {
               boxShadow: 0,
             },
           }}
+          onClick={() => navigate("/products")}
         >
           See more <ArrowForwardRoundedIcon />
         </Button>

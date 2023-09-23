@@ -3,8 +3,10 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function Categories() {
+  const navigate = useNavigate();
   return (
     <Box
       className="Categories"
@@ -138,6 +140,7 @@ function Categories() {
                 boxShadow: 0,
               },
           }}
+          onClick={() => navigate("/products")}
         >
           Explore <ArrowForwardRoundedIcon />
         </Button>

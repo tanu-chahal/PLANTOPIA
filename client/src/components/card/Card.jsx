@@ -5,9 +5,11 @@ import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import React from 'react'
+import { useNavigate } from "react-router-dom";
 import styles from './Card.module.css'
 
 function Card({name,img,category,price,rate, desc}) {
+  const navigate = useNavigate();
   return (
     <Paper elevation={2} sx={{overflow:'hidden', height:'fit-content', display:'flex', width:'400px', my:10 }}>
 
@@ -58,6 +60,7 @@ function Card({name,img,category,price,rate, desc}) {
               boxShadow: 0,
             },
           }}
+          onClick={()=>navigate("/mycart")}
         >
           Add to Cart
         </Button>

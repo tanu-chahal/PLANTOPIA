@@ -9,9 +9,10 @@ import Button from "@mui/material/Button";
 import GoogleIcon from "@mui/icons-material/Google";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
+import PersonOutlineRoundedIcon from "@mui/icons-material/PersonOutlineRounded";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
+import Divider from "@mui/material/Divider";
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -68,7 +69,7 @@ function Login() {
             alignItems: "center",
             gap: 5,
             borderRadius: "0px",
-            py:5,
+            py: 5,
           }}
         >
           <Tabs
@@ -82,28 +83,29 @@ function Login() {
             <Tab value="register" label="Register" />
           </Tabs>
           {value == "login" ? (
-            <Box sx={{ display:"flex", flexDirection:'column', gap:5}}>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 5 }}>
               <Button
-                  variant="contained"
-                  color="primary"
-                  sx={{
-                    border: "none",
+                variant="contained"
+                color="primary"
+                sx={{
+                  border: "none",
+                  boxShadow: 0,
+                  color: "black",
+                  textTransform: "none",
+                  py: 1,
+                  px: 2,
+                  fontSize: 16,
+                  borderRadius: 2,
+                  "&:hover": {
+                    color: "white",
                     boxShadow: 0,
-                    color: "black",
-                    textTransform: "none",
-                    py: 1,
-                    px: 2,
-                    fontSize: 16,
-                    borderRadius: 2,
-                    "&:hover": {
-                      color: "white",
-                      boxShadow: 0,
-                    },
-                  }}
-                >
-                  <GoogleIcon sx={{mr:2}}/>
-                  Continue with Google
-                </Button>
+                  },
+                }}
+              >
+                <GoogleIcon sx={{ mr: 2 }} />
+                Continue with Google
+              </Button>
+              <Divider flexItem sx={{ height:1, color: "#8f8f8f",fontSize:'13px', fontFamily: '"Montserrat", Arial, sans-serif', }} >or login using</Divider>
               <form
                 style={{
                   display: "flex",
@@ -124,7 +126,7 @@ function Login() {
                     ),
                   }}
                 />
-              
+
                 <TextField
                   type="password"
                   label="Password"
@@ -138,7 +140,7 @@ function Login() {
                     ),
                   }}
                 />
-    
+
                 <Button
                   variant="contained"
                   type="submit"
@@ -164,28 +166,30 @@ function Login() {
               </form>
             </Box>
           ) : (
-            <Box sx={{ display:"flex", flexDirection:'column', gap:5}}>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 5 }}>
               <Button
-                  variant="contained"
-                  color="primary"
-                  sx={{
-                    border: "none",
+                variant="contained"
+                color="primary"
+                sx={{
+                  border: "none",
+                  boxShadow: 0,
+                  color: "black",
+                  textTransform: "none",
+                  py: 1,
+                  px: 2,
+                  fontSize: 16,
+                  borderRadius: 2,
+                  "&:hover": {
+                    color: "white",
                     boxShadow: 0,
-                    color: "black",
-                    textTransform: "none",
-                    py: 1,
-                    px: 2,
-                    fontSize: 16,
-                    borderRadius: 2,
-                    "&:hover": {
-                      color: "white",
-                      boxShadow: 0,
-                    },
-                  }}
-                >
-                  <GoogleIcon sx={{mr:2}}/>
-                  Continue with Google
-                </Button>
+                  },
+                }}
+              >
+                <GoogleIcon sx={{ mr: 2 }} />
+                Continue with Google
+              </Button>
+                <Divider flexItem sx={{ height:1, color: "#8f8f8f",fontSize:'13px', fontFamily: '"Montserrat", Arial, sans-serif', }} >or join using</Divider>
+              
               <form
                 style={{
                   display: "flex",
@@ -205,7 +209,7 @@ function Login() {
                       </InputAdornment>
                     ),
                     inputProps: {
-                      maxLength: 25, 
+                      maxLength: 25,
                     },
                   }}
                 />
@@ -222,7 +226,7 @@ function Login() {
                     ),
                   }}
                 />
-              
+
                 <TextField
                   type="password"
                   label="Password"
@@ -236,7 +240,7 @@ function Login() {
                     ),
                   }}
                 />
-    
+
                 <Button
                   variant="contained"
                   type="submit"
@@ -256,7 +260,7 @@ function Login() {
                     },
                   }}
                 >
-                  Log In
+                  Sign Up
                 </Button>
                 {/* {error && <span>{error}</span>} */}
               </form>
