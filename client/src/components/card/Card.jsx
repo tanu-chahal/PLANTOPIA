@@ -8,10 +8,10 @@ import React from 'react'
 import { useNavigate } from "react-router-dom";
 import styles from './Card.module.css'
 
-function Card({name,img,category,price,rate, desc}) {
+function Card({id,name,img,category,price,rate, desc}) {
   const navigate = useNavigate();
   return (
-    <Paper elevation={2} sx={{overflow:'hidden', height:'fit-content', display:'flex', width:'400px', my:10 }}>
+    <Paper key={id} elevation={2} sx={{overflow:'hidden', height:'fit-content', display:'flex', width:'400px', my:10 }}>
 
             <img src={img} alt="" className={styles.plantImg} />
 

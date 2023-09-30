@@ -32,6 +32,7 @@ function Cart() {
   const navigate = useNavigate();
   const breadcrumbs = [
     <Typography
+      key="home"
       color="secondary"
       component="p"
       variant="subtitle2"
@@ -41,6 +42,7 @@ function Cart() {
       Home
     </Typography>,
     <Typography
+      key="products"
       color="secondary"
       component="p"
       variant="subtitle2"
@@ -50,6 +52,7 @@ function Cart() {
       Products
     </Typography>,
     <Typography
+      key="mycart"
       color="secondary"
       component="p"
       variant="subtitle2"
@@ -93,7 +96,7 @@ function Cart() {
                       sx={{ml:5}}
                     />
                   <img src={p.img} alt="" className={styles.plantImg} />
-                  <Box sx={{ display: "flex", flexDirection: "column", }}>
+                  <Box sx={{ display: "flex", flexDirection: "column", alignItems:'flex-start'}}>
                     <Typography component="p" variant="subtitle2">
                       {p.plantName}
                     </Typography>

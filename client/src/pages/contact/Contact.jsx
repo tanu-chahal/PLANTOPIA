@@ -11,6 +11,7 @@ function Contact() {
   const navigate = useNavigate();
   const breadcrumbs = [
     <Typography
+    key="home"
       color="secondary"
       component="p"
       variant="subtitle2"
@@ -20,6 +21,7 @@ function Contact() {
       Home
     </Typography>,
     <Typography
+    key="contact"
       color="secondary"
       component="p"
       variant="subtitle2"

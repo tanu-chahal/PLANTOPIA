@@ -22,6 +22,7 @@ function Login() {
 
   const breadcrumbs = [
     <Typography
+    key="home"
       color="secondary"
       component="p"
       variant="subtitle2"
@@ -31,6 +32,7 @@ function Login() {
       Home
     </Typography>,
     <Typography
+    key="login"
       color="secondary"
       component="p"
       variant="subtitle2"

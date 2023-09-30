@@ -1,0 +1,11 @@
+.slideInOut {
+    transform: translateX(100%);
+    max-height:0;
+    transition: transform 0.3s ease-out; 
+  }
+
+.slideInOut.visible{
+    max-height: fit-content;
+    transform: translateX(0%);
+}
+

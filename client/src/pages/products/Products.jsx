@@ -6,7 +6,9 @@ import Container from "@mui/material/Container";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
-import React, {useState} from "react";
+import Pagination from '@mui/material/Pagination';
+import PaginationItem from '@mui/material/PaginationItem';
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { plants } from "../../utils/data.js";
 import Card from "../../components/card/Card.jsx";
@@ -15,27 +17,29 @@ function Products() {
   const navigate = useNavigate();
   const breadcrumbs = [
     <Typography
+    key="home"
       color="secondary"
       component="p"
       variant="subtitle2"
       sx={{ cursor: "pointer", "&:hover": { color: "#484c4c" } }}
-      onClick={()=>navigate("/")}
+      onClick={() => navigate("/")}
     >
       Home
     </Typography>,
     <Typography
+    key="products"
       color="secondary"
       component="p"
       variant="subtitle2"
       sx={{ cursor: "pointer", "&:hover": { color: "#484c4c" } }}
-      onClick={()=>navigate("/products")}
+      onClick={() => navigate("/products")}
     >
       Products
     </Typography>,
   ];
-  const [category, setCategory]=useState("All");
-  const [sort, setSort]=useState("sales");
-  const [price, setPrice]=useState(null);
+  const [category, setCategory] = useState("All");
+  const [sort, setSort] = useState("sales");
+  const [price, setPrice] = useState(2000);
   const handleCategory = (e) => {
     setCategory(e.target.value)
   };
@@ -43,24 +47,24 @@ function Products() {
     setSort(e.target.value)
   };
   const handlePrice = (e) => {
-    setPrice(e.target.value)
+    setPrice(e.target.value || 2000)
   };
 
   function sortPlantsByAttribute(plants, sortBy) {
     const sortedPlants = [...plants];
-  
+
     if (sortBy === 'rating') {
       sortedPlants.sort((a, b) => b.rating - a.rating);
     } else if (sortBy === 'price') {
-      sortedPlants.sort((a, b) => a.price - b.price); 
+      sortedPlants.sort((a, b) => a.price - b.price);
     }
     else if (sortBy === 'sales') {
-      sortedPlants.sort((a, b) => b.sales - a.sales); 
+      sortedPlants.sort((a, b) => b.sales - a.sales);
     }
     return sortedPlants;
   }
-  
-  const filteredPlants = sortPlantsByAttribute(plants, sort).filter((plant) => category!=="All" ? plant.category === category : plant.category!==null).filter(p=> price ? p.price<=price : p.price>=0);
+
+  const filteredPlants = sortPlantsByAttribute(plants, sort).filter((plant) => category !== "All" ? plant.category === category : plant.category !== null).filter(p => price ? p.price <= price : p.price >= 0);
 
   return (
     <Box
@@ -73,7 +77,7 @@ function Products() {
         alignItems: "center",
       }}
     >
-      <Breadcrumbs separator="›" aria-label="breadcrumb" sx={{alignSelf:'flex-start', mx:5,}}>
+      <Breadcrumbs separator="›" aria-label="breadcrumb" sx={{ alignSelf: 'flex-start', mx: 5, }}>
         {breadcrumbs}
       </Breadcrumbs>
 
@@ -81,19 +85,19 @@ function Products() {
         className="top"
         maxwidth='xl'
         sx={{
-          py:5,
+          py: 5,
           width: "100%",
           display: "flex",
           alignItems: "center",
           gap: 40,
-          justifyContent:'flex-end',
+          justifyContent: 'flex-end',
         }}
       >
         <FormControl fullWidth>
           <InputLabel id="category">Category</InputLabel>
           <Select
             labelId="category"
-            id="category-select"
+            id="category-select"q
             value={category}
             label="Category"
             onChange={handleCategory}
@@ -115,17 +119,17 @@ function Products() {
             value={price}
             label="Price"
             onChange={handlePrice}
-            sx={{ width: "250px",color:'black', outlineColor: 'black' }}
+            sx={{ width: "250px", color: 'black', outlineColor: 'black' }}
           >
             <MenuItem value={300}> {'<='} 300</MenuItem>
             <MenuItem value={500}>{'<='} 500</MenuItem>
             <MenuItem value={700}>{'<='} 700</MenuItem>
             <MenuItem value={1000}>{'<='} 1000</MenuItem>
-            <MenuItem value={1500}>{'<='} 1500</MenuItem>
+            <MenuItem value={2000}>{'<='} 2000</MenuItem>
           </Select>
         </FormControl>
 
-        <FormControl fullWidth sx={{mx:'auto'}}>
+        <FormControl fullWidth sx={{ mx: 'auto' }}>
           <InputLabel id="sort-by">Sort By</InputLabel>
           <Select
             labelId="sort-by"
@@ -150,13 +154,14 @@ function Products() {
           gap: 5,
           flexWrap: "wrap",
           justifyContent: "center",
-          minHeight:"500px",
+          minHeight: "500px",
         }}
       >
-        {filteredPlants.length!==0 ? filteredPlants.map((p) => {
+        {filteredPlants.length !== 0 ? (filteredPlants.map((p) => {
           return (
             <Card
               key={p.id}
+              id={p.id}
               name={p.plantName}
               img={p.img}
               category={p.category}
@@ -165,12 +170,14 @@ function Products() {
               desc={p.desc}
             />
           );
-        }):
-        <Typography component="h4" variant="h6" color="secondary">
-         No Items Found.
-        </Typography>
-      }
+        })) :
+          <Typography key={0} component="h4" variant="h6" color="secondary">
+            No Items Found.
+          </Typography>
+        }
       </Box>
+
+      <Pagination count={2} color="primary" sx={{ mb: 10 }} />
     </Box>
   );
 }
