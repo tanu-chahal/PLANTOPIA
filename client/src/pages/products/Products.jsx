@@ -78,14 +78,14 @@ function Products() {
       </Breadcrumbs>
 
       <Container
-        maxWidth="lg"
         className="top"
+        maxwidth='xl'
         sx={{
           py:5,
           width: "100%",
           display: "flex",
           alignItems: "center",
-          gap: 0,
+          gap: 40,
           justifyContent:'flex-end',
         }}
       >
@@ -97,7 +97,7 @@ function Products() {
             value={category}
             label="Category"
             onChange={handleCategory}
-            sx={{ width: "200px" }}
+            sx={{ width: "250px" }}
           >
             <MenuItem value='All'>All</MenuItem>
             <MenuItem value='Herb Plants'>Herb Plants</MenuItem>
@@ -115,7 +115,7 @@ function Products() {
             value={price}
             label="Price"
             onChange={handlePrice}
-            sx={{ width: "200px",color:'black', outlineColor: 'black' }}
+            sx={{ width: "250px",color:'black', outlineColor: 'black' }}
           >
             <MenuItem value={300}> {'<='} 300</MenuItem>
             <MenuItem value={500}>{'<='} 500</MenuItem>
@@ -133,7 +133,7 @@ function Products() {
             value={sort}
             label="Sort By"
             onChange={handleSortType}
-            sx={{ width: "200px" }}
+            sx={{ width: "250px" }}
           >
             <MenuItem value="rating">Rating</MenuItem>
             <MenuItem value="createdAt">Newest</MenuItem>
