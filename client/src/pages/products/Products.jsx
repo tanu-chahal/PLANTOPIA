@@ -6,18 +6,27 @@ import Container from "@mui/material/Container";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
-import Pagination from '@mui/material/Pagination';
-import PaginationItem from '@mui/material/PaginationItem';
-import React, { useState } from "react";
+import Pagination from "@mui/material/Pagination";
+import PaginationItem from "@mui/material/PaginationItem";
+import React from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { useNavigate } from "react-router-dom";
-import { plants } from "../../utils/data.js";
 import Card from "../../components/card/Card.jsx";
+import {
+  productListFilterState,
+  productListPriceState,
+  productListSortState,
+  filteredProductListState,
+} from "../../recoilState.js";
 
 function Products() {
   const navigate = useNavigate();
+  const [catFilter, setCatFilter] = useRecoilState(productListFilterState);
+  const [priceFilter, setPriceFilter] = useRecoilState(productListPriceState);
+  const [sortFilter, setSortFilter] = useRecoilState(productListSortState);
   const breadcrumbs = [
     <Typography
-    key="home"
+      key="home"
       color="secondary"
       component="p"
       variant="subtitle2"
@@ -27,7 +36,7 @@ function Products() {
       Home
     </Typography>,
     <Typography
-    key="products"
+      key="products"
       color="secondary"
       component="p"
       variant="subtitle2"
@@ -37,34 +46,17 @@ function Products() {
       Products
     </Typography>,
   ];
-  const [category, setCategory] = useState("All");
-  const [sort, setSort] = useState("sales");
-  const [price, setPrice] = useState(2000);
+  const plants = useRecoilValue(filteredProductListState);
+
   const handleCategory = (e) => {
-    setCategory(e.target.value)
+    setCatFilter(e.target.value);
   };
   const handleSortType = (e) => {
-    setSort(e.target.value)
+    setSortFilter(e.target.value);
   };
   const handlePrice = (e) => {
-    setPrice(e.target.value || 2000)
+    setPriceFilter(e.target.value);
   };
-
-  function sortPlantsByAttribute(plants, sortBy) {
-    const sortedPlants = [...plants];
-
-    if (sortBy === 'rating') {
-      sortedPlants.sort((a, b) => b.rating - a.rating);
-    } else if (sortBy === 'price') {
-      sortedPlants.sort((a, b) => a.price - b.price);
-    }
-    else if (sortBy === 'sales') {
-      sortedPlants.sort((a, b) => b.sales - a.sales);
-    }
-    return sortedPlants;
-  }
-
-  const filteredPlants = sortPlantsByAttribute(plants, sort).filter((plant) => category !== "All" ? plant.category === category : plant.category !== null).filter(p => price ? p.price <= price : p.price >= 0);
 
   return (
     <Box
@@ -77,37 +69,41 @@ function Products() {
         alignItems: "center",
       }}
     >
-      <Breadcrumbs separator="›" aria-label="breadcrumb" sx={{ alignSelf: 'flex-start', mx: 5, }}>
+      <Breadcrumbs
+        separator="›"
+        aria-label="breadcrumb"
+        sx={{ alignSelf: "flex-start", mx: 5 }}
+      >
         {breadcrumbs}
       </Breadcrumbs>
 
       <Container
         className="top"
-        maxwidth='xl'
+        maxwidth="xl"
         sx={{
           py: 5,
           width: "100%",
           display: "flex",
           alignItems: "center",
           gap: 40,
-          justifyContent: 'flex-end',
+          justifyContent: "flex-end",
         }}
       >
         <FormControl fullWidth>
           <InputLabel id="category">Category</InputLabel>
           <Select
             labelId="category"
-            id="category-select"q
-            value={category}
+            id="category-select"
+            value={catFilter}
             label="Category"
             onChange={handleCategory}
             sx={{ width: "250px" }}
           >
-            <MenuItem value='All'>All</MenuItem>
-            <MenuItem value='Herb Plants'>Herb Plants</MenuItem>
-            <MenuItem value='Floral Plants'>Floral Plants</MenuItem>
-            <MenuItem value='Natural Plants'>Natural Plants</MenuItem>
-            <MenuItem value='Artificial Plants'>Artificial Plants</MenuItem>
+            <MenuItem value="All">All</MenuItem>
+            <MenuItem value="Herb Plants">Herb Plants</MenuItem>
+            <MenuItem value="Floral Plants">Floral Plants</MenuItem>
+            <MenuItem value="Natural Plants">Natural Plants</MenuItem>
+            <MenuItem value="Artificial Plants">Artificial Plants</MenuItem>
           </Select>
         </FormControl>
 
@@ -116,25 +112,25 @@ function Products() {
           <Select
             labelId="price"
             id="price-select"
-            value={price}
+            value={priceFilter}
             label="Price"
             onChange={handlePrice}
-            sx={{ width: "250px", color: 'black', outlineColor: 'black' }}
+            sx={{ width: "250px", color: "black", outlineColor: "black" }}
           >
-            <MenuItem value={300}> {'<='} 300</MenuItem>
-            <MenuItem value={500}>{'<='} 500</MenuItem>
-            <MenuItem value={700}>{'<='} 700</MenuItem>
-            <MenuItem value={1000}>{'<='} 1000</MenuItem>
-            <MenuItem value={2000}>{'<='} 2000</MenuItem>
+            <MenuItem value={300}> {"<="} 300</MenuItem>
+            <MenuItem value={500}>{"<="} 500</MenuItem>
+            <MenuItem value={700}>{"<="} 700</MenuItem>
+            <MenuItem value={1000}>{"<="} 1000</MenuItem>
+            <MenuItem value={2000}>{"<="} 2000</MenuItem>
           </Select>
         </FormControl>
 
-        <FormControl fullWidth sx={{ mx: 'auto' }}>
+        <FormControl fullWidth sx={{ mx: "auto" }}>
           <InputLabel id="sort-by">Sort By</InputLabel>
           <Select
             labelId="sort-by"
             id="sort-by-select"
-            value={sort}
+            value={sortFilter}
             label="Sort By"
             onChange={handleSortType}
             sx={{ width: "250px" }}
@@ -157,24 +153,26 @@ function Products() {
           minHeight: "500px",
         }}
       >
-        {filteredPlants.length !== 0 ? (filteredPlants.map((p) => {
-          return (
-            <Card
-              key={p.id}
-              id={p.id}
-              name={p.plantName}
-              img={p.img}
-              category={p.category}
-              price={p.price}
-              rate={p.rating}
-              desc={p.desc}
-            />
-          );
-        })) :
+        {plants.length !== 0 ? (
+          plants.map((p) => {
+            return (
+              <Card
+                key={p.id}
+                id={p.id}
+                name={p.plantName}
+                img={p.img}
+                category={p.category}
+                price={p.price}
+                rate={p.rating}
+                desc={p.desc}
+              />
+            );
+          })
+        ) : (
           <Typography key={0} component="h4" variant="h6" color="secondary">
             No Items Found.
           </Typography>
-        }
+        )}
       </Box>
 
       <Pagination count={2} color="primary" sx={{ mb: 10 }} />
