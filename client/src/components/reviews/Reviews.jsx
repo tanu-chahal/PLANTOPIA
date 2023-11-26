@@ -4,10 +4,10 @@ import StarIcon from "@mui/icons-material/Star";
 import React from "react";
 import { reviews } from "../../utils/data";
 import { useRecoilState } from "recoil";
-import { activeReview } from "../../recoilState.js";
+import { homeAtoms } from "../../states";
 
 function Reviews() {
-  const [start, setStart] = useRecoilState(activeReview);
+  const [start, setStart] = useRecoilState(homeAtoms.activeReview);
 
   return (
     <Box sx={{ ml: 10, mb: 30, userSelect: "none" }}>

@@ -12,18 +12,13 @@ import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useNavigate } from "react-router-dom";
 import Card from "../../components/card/Card.jsx";
-import {
-  productListFilterState,
-  productListPriceState,
-  productListSortState,
-  filteredProductListState,
-} from "../../recoilState.js";
+import {productAtoms, productSelectors } from "../../states";
 
 function Products() {
   const navigate = useNavigate();
-  const [catFilter, setCatFilter] = useRecoilState(productListFilterState);
-  const [priceFilter, setPriceFilter] = useRecoilState(productListPriceState);
-  const [sortFilter, setSortFilter] = useRecoilState(productListSortState);
+  const [catFilter, setCatFilter] = useRecoilState(productAtoms.productListFilterState);
+  const [priceFilter, setPriceFilter] = useRecoilState(productAtoms.productListPriceState);
+  const [sortFilter, setSortFilter] = useRecoilState(productAtoms.productListSortState);
   const breadcrumbs = [
     <Typography
       key="home"
@@ -46,7 +41,7 @@ function Products() {
       Products
     </Typography>,
   ];
-  const plants = useRecoilValue(filteredProductListState);
+  const plants = useRecoilValue(productSelectors.filteredProductListState);
 
   const handleCategory = (e) => {
     setCatFilter(e.target.value);

@@ -8,15 +8,15 @@ import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import React, {useEffect} from 'react'
 import {useNavigate} from "react-router-dom"
 import { useRecoilState } from "recoil";
-import {menuState, activePage} from "../../recoilState.js"
+import {navbarAtoms} from "../../states"
 import styles from "./Navbar.module.css"
 import {useLocation} from "react-router-dom"
 
 function Navbar() {
   const navigate = useNavigate();
   const {pathname} = useLocation();
-  const [menu, setMenu] = useRecoilState(menuState);
-  const [active, setActive] = useRecoilState(activePage);
+  const [menu, setMenu] = useRecoilState(navbarAtoms.menuState);
+  const [active, setActive] = useRecoilState(navbarAtoms.activePage);
   useEffect(() => {
     setActive(pathname); 
   }, [pathname, setActive]);
