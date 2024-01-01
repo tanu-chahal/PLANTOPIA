@@ -3,7 +3,7 @@ import {productListFilterState, productListPriceState, productListSortState } fr
 import { plants } from "../../utils/data.js";
 
 export const filteredProductListState = selector({
-    key: "FilteredProductList",
+    key: "filteredProductList",
     get: ({ get }) => {
       const filter = get(productListFilterState);
       const priceFilter = get(productListPriceState);

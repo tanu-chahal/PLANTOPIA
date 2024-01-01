@@ -5,11 +5,21 @@ import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import React from 'react'
+import { useRecoilState} from "recoil";
 import { useNavigate } from "react-router-dom";
 import styles from './Card.module.css'
+import {cartAtoms } from "../../states";
 
-function Card({id,name,img,category,price,rate, desc}) {
+function Card({plant}) {
+  const {id,name,img,category,price,rate, desc} = plant;
+  const [cartItems, setCartItems] = useRecoilState(cartAtoms.cartItemsState);
   const navigate = useNavigate();
+  const handleClick = () =>{
+    const newItem = {...plant, quantity:1}
+    const newCart = [...cartItems, newItem]
+    setCartItems(newCart)
+    navigate("/mycart")
+  }
   return (
     <Paper key={id} elevation={2} sx={{overflow:'hidden', height:'fit-content', display:'flex', width:'400px', my:10 }}>
 
@@ -60,7 +70,7 @@ function Card({id,name,img,category,price,rate, desc}) {
               boxShadow: 0,
             },
           }}
-          onClick={()=>navigate("/mycart")}
+          onClick={handleClick}
         >
           Add to Cart
         </Button>

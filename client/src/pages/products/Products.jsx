@@ -153,13 +153,15 @@ function Products() {
             return (
               <Card
                 key={p.id}
-                id={p.id}
-                name={p.plantName}
-                img={p.img}
-                category={p.category}
-                price={p.price}
-                rate={p.rating}
-                desc={p.desc}
+                plant={{
+                  id: p.id,
+                  name: p.plantName,
+                  img: p.img,
+                  category: p.category,
+                  price: p.price,
+                  rate: p.rating,
+                  desc: p.desc,
+                }}
               />
             );
           })
