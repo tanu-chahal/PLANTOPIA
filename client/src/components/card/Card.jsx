@@ -15,7 +15,7 @@ function Card({plant}) {
   const [cartItems, setCartItems] = useRecoilState(cartAtoms.cartItemsState);
   const navigate = useNavigate();
   const handleClick = () =>{
-    const newItem = {...plant, quantity:1}
+    const newItem = {...plant, quantity:1, checked: true}
     const newCart = [...cartItems, newItem]
     setCartItems(newCart)
     navigate("/mycart")

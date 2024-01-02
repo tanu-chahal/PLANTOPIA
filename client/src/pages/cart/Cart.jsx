@@ -32,6 +32,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 function Cart() {
   const [cartItems, setCartItems] = useRecoilState(cartAtoms.cartItemsState);
+  const {noOfItems, itemsTotal,tax,deliveryCost,totalPayment} = useRecoilValue(cartSelectors.totalCost)
   const navigate = useNavigate();
 
   const addQuantity = (id) =>{
@@ -52,6 +53,14 @@ function Cart() {
     const updatedCart= cartItems.filter(item => item.id !== id);
     setCartItems(updatedCart) 
   }
+
+  const handleCheckbox = (id) =>{
+    const updatedCart= cartItems.map(item=>
+      item.id===id ? {...item, checked: !item.checked} : item
+      )
+    setCartItems(updatedCart) 
+  }
+
   const breadcrumbs = [
     <Typography
       key="home"
@@ -113,8 +122,8 @@ function Cart() {
                     sx={{ display: "flex", color: "black", gap: 5 }}
                   >
                     <Checkbox
-                      checked={false}
-                      // onChange={handleChange}
+                      checked={p.checked}
+                      onChange={()=>handleCheckbox(p.id)}
                       inputProps={{ "aria-label": "controlled" }}
                       sx={{ ml: 5 }}
                     />
@@ -227,7 +236,7 @@ function Cart() {
                     variant="subtitle3"
                     color="tertiary"
                   >
-                    2
+                    {noOfItems}
                   </Typography>
                 </Box>
 
@@ -250,7 +259,7 @@ function Cart() {
                     variant="subtitle3"
                     color="tertiary"
                   >
-                    ₹ 100
+                    ₹ {itemsTotal}
                   </Typography>
                 </Box>
 
@@ -273,7 +282,7 @@ function Cart() {
                     variant="subtitle3"
                     color="tertiary"
                   >
-                    ₹ 10
+                    ₹ {tax}
                   </Typography>
                 </Box>
 
@@ -296,7 +305,7 @@ function Cart() {
                     variant="subtitle3"
                     color="tertiary"
                   >
-                    ₹ 0
+                    ₹ {deliveryCost}
                   </Typography>
                 </Box>
               </Box>
@@ -314,7 +323,7 @@ function Cart() {
                   Total
                 </Typography>
                 <Typography component="p" variant="h6" color="tertiary">
-                  ₹ 110
+                  ₹ {totalPayment}
                 </Typography>
               </Box>
 
