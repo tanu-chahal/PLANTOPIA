@@ -16,7 +16,6 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import React from "react";
-import { plants } from "../../utils/data.js";
 import { useNavigate } from "react-router-dom";
 import styles from "./Cart.module.css";
 import { cartAtoms, cartSelectors } from "../../states";
