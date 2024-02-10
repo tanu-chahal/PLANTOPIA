@@ -7,7 +7,6 @@ import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Pagination from "@mui/material/Pagination";
-import PaginationItem from "@mui/material/PaginationItem";
 import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useNavigate } from "react-router-dom";
@@ -19,6 +18,7 @@ function Products() {
   const [catFilter, setCatFilter] = useRecoilState(productAtoms.productListFilterState);
   const [priceFilter, setPriceFilter] = useRecoilState(productAtoms.productListPriceState);
   const [sortFilter, setSortFilter] = useRecoilState(productAtoms.productListSortState);
+  const [currentPage, setCurrentPage] = useRecoilState(productAtoms.currentPageState);
   const breadcrumbs = [
     <Typography
       key="home"
@@ -42,15 +42,26 @@ function Products() {
     </Typography>,
   ];
   const plants = useRecoilValue(productSelectors.filteredProductListState);
+  const itemsPerPage = 12;
+  const totalItems = plants.length;
+  const totalPages = Math.ceil(totalItems / itemsPerPage)
+
+  const itemsForCurrentPage = plants.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
   const handleCategory = (e) => {
     setCatFilter(e.target.value);
+    setCurrentPage(1);
   };
   const handleSortType = (e) => {
     setSortFilter(e.target.value);
+    setCurrentPage(1);
   };
   const handlePrice = (e) => {
     setPriceFilter(e.target.value);
+    setCurrentPage(1);
   };
 
   return (
@@ -148,8 +159,8 @@ function Products() {
           minHeight: "500px",
         }}
       >
-        {plants.length !== 0 ? (
-          plants.map((p) => {
+        {itemsForCurrentPage.length !== 0 ? (
+          itemsForCurrentPage.map((p) => {
             return (
               <Card
                 key={p.id}
@@ -172,7 +183,8 @@ function Products() {
         )}
       </Box>
 
-      <Pagination count={2} color="primary" sx={{ mb: 10 }} />
+      <Pagination count={totalPages} color="primary" sx={{ mb: 10 }} page={currentPage}
+        onChange={(event, page) => setCurrentPage(page)}/>
     </Box>
   );
 }

@@ -129,6 +129,36 @@ export const plants = [
     rating: 2,
     sales: 33,
   },
+  {
+    id: 14,
+    plantName: "Rubber Herb",
+    category: "Artificial Plants",
+    desc: "Most beautiful room decor.",
+    img: "/img/plant-10.jpg",
+    price: 399,
+    rating: 3.5,
+    sales: 80,
+  },
+  {
+    id: 15,
+    plantName: "Little Herb",
+    category: "Herb Plants",
+    desc: "Perfect for your home garden.",
+    img: "/img/plant-6.jpg",
+    price: 99,
+    rating: 4.5,
+    sales: 79,
+  },
+  {
+    id: 16,
+    plantName: "White Flower",
+    category: "Natural Plants",
+    desc: "Perfect for your home garden.",
+    img: "/img/plant-2.jpg",
+    price: 899,
+    rating: 3.5,
+    sales: 40,
+  },
 ];
 
 export const reviews = [

@@ -15,3 +15,7 @@ export const productListFilterState = atom({
     default: 'sales',
   });
   
+  export const currentPageState = atom({
+    key: "currentPageState",
+    default: 1,
+  });
