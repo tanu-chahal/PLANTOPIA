@@ -10,13 +10,14 @@ function Intro() {
 
   return (
     <Container
+    className='intro'
       maxWidth="lg"
       sx={{
         backgroundColor: "#c1dcdc",
         display: "flex",
         justifyContent: "space-between",
         height: 450,
-        borderRadius: 10,
+        borderRadius: {xs:0, sm: 10,},
         userSelect: "none",
       }}
     >
@@ -34,12 +35,15 @@ function Intro() {
         <Typography
           variant="h3"
           component="h1"
-          sx={{ fontWeight: 900, maxWidth: 350 }}
+          sx={{ fontWeight: 900, 
+            maxWidth: {xs:'100%', md:350 },
+            fontSize: {xs: '35px',}
+          }}
         >
           Buy your dream plants
         </Typography>
 
-        <Box sx={{ display: "flex", alignItems: "center", gap: 5 }}>
+        <Box sx={{ display:"flex", alignItems: "center", gap: 5 }}>
           <Box>
             <Typography component="p" variant="h4" sx={{ fontWeight: 500 }}>
               50+
@@ -76,10 +80,11 @@ function Intro() {
       </Box>
 
       <Box
+      className = 'imgBox'
         sx={{
           alignSelf: "flex-end",
           justifySelf: "flex-end",
-          display: "flex",
+          display: {xs:'none', sm: "flex",},
           position: "relative",
           height: "100%",
           width: "60%",
@@ -93,8 +98,10 @@ function Intro() {
             position: "absolute",
             bottom: "5%",
             left: "5%",
+            display: 'none',
             transform: "rotate(15deg)",
           }}
+          className={styles.arrow}
           src="/img/c-arr-1.png"
           alt=""
         />
@@ -104,23 +111,32 @@ function Intro() {
             borderRadius: "50% 50% 0 50%",
             alignSelf: "flex-end",
             mx: 10,
+            display: { xs: 'none', sm: 'none', md: 'block' },
           }}
         >
           <img
-            style={{ width: "400px", heigth: "400px", borderRadius: "50%" }}
+            style={{ 
+              // width: "400px", heigth: "400px", borderRadius: "50%"
+            width: "100%",
+            height: "auto", 
+            maxWidth: "400px",
+            borderRadius: "50%",
+           }}
             src="/img/pot-2.jpeg"
             alt=""
           />
         </Box>
         <img
           style={{
-            width: "80px",
+            maxWidth: "80px",
             position: "absolute",
             top: "0%",
             right: "5%",
             transform: "rotate(180deg)",
-          }}
+            display:'none',
+            }}
           src="/img/c-arr-1.png"
+          className={styles.arrow}
           alt=""
         />
       </Box>

@@ -39,3 +39,9 @@
     color: white;
     background-color: #889c9c;
 }
+
+@media (min-width: 600px) {
+  .intro .imgBox .arrow {
+    display: block;
+  }
+}
