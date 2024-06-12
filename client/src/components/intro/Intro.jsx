@@ -98,7 +98,7 @@ function Intro() {
             position: "absolute",
             bottom: "5%",
             left: "5%",
-            display: 'none',
+            // display: 'none',
             transform: "rotate(15deg)",
           }}
           className={styles.arrow}
@@ -133,7 +133,7 @@ function Intro() {
             top: "0%",
             right: "5%",
             transform: "rotate(180deg)",
-            display:'none',
+            // display:'none',
             }}
           src="/img/c-arr-1.png"
           className={styles.arrow}
